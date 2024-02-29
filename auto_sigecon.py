@@ -15,7 +15,7 @@ var2 = obter_hora_por_tipo("si_jan.xlsx")
 
 
 # Navevagção para a pagina
-url = 'http://s*********'
+url = 'http://**********'
 
 nav = webdriver.Firefox()
 
