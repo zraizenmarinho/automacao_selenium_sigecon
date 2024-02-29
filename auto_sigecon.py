@@ -15,7 +15,7 @@ var2 = obter_hora_por_tipo("si_jan.xlsx")
 
 
 # Navevagção para a pagina
-url = 'http://sn-iis-02/SIGECON20/'
+url = 'http://s*********'
 
 nav = webdriver.Firefox()
 
@@ -24,13 +24,13 @@ nav.get(url)
 # Elemento Usuario
 e_usuario = WebDriverWait(nav, 5).until(
     EC.visibility_of_element_located((By.XPATH, '//*[@id="UserName"]')))
-usuario = "matheus.reck"
+usuario = "******"
 e_usuario.send_keys(usuario)
 
 # Elemento Senha
 e_senha = WebDriverWait(nav, 5).until(
     EC.visibility_of_element_located((By.XPATH, '//*[@id="Password"]')))
-senha = "P**75**"
+senha = "*******"
 e_senha.send_keys(senha)
 
 # Elemento Ano
