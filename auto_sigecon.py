@@ -7,15 +7,19 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
-from si_janeiro_mat import obter_matriculas_por_tipo
-from si_janeiro_mat import obter_hora_por_tipo
-
-var1 = obter_matriculas_por_tipo("si_jan.xlsx")
-var2 = obter_hora_por_tipo("si_jan.xlsx")
+from si_janeiro import obter_matriculas_por_tipo
+from si_janeiro import obter_hora_por_tipo
+from si_janeiro import obter_concluintes_por_tipo
+from si_janeiro import obter_evasao_por_tipo
+resultados = obter_hora_por_tipo("si_jan.xlsx")
+var1_1 = obter_matriculas_por_tipo("si_jan.xlsx")
+var1_2 = resultados
+var1_3 = obter_concluintes_por_tipo("si_jan.xlsx")
+var1_4 = obter_evasao_por_tipo("si_jan.xlsx")
 
 
 # Navevagção para a pagina
-url = 'http://**********'
+url = 'http://sn-iis-02/SIGECON20/'
 
 nav = webdriver.Firefox()
 
@@ -24,13 +28,13 @@ nav.get(url)
 # Elemento Usuario
 e_usuario = WebDriverWait(nav, 5).until(
     EC.visibility_of_element_located((By.XPATH, '//*[@id="UserName"]')))
-usuario = "******"
+usuario = ""
 e_usuario.send_keys(usuario)
 
 # Elemento Senha
 e_senha = WebDriverWait(nav, 5).until(
     EC.visibility_of_element_located((By.XPATH, '//*[@id="Password"]')))
-senha = "*******"
+senha = "!"
 e_senha.send_keys(senha)
 
 # Elemento Ano
@@ -93,7 +97,7 @@ em_bolsa_click.click()
 
 em_bolsa_s = WebDriverWait(nav, 10).until(EC.visibility_of_element_located((By.XPATH, "(//input[@type='text'])[8]")))
 
-em_bolsa_s.send_keys(var1['ip_mat_bolsa'])
+em_bolsa_s.send_keys(var1_1['jan_ip_mat_bolsa'])
 
 em_bolsa_s.send_keys(Keys.ENTER)
 
@@ -106,7 +110,7 @@ em_n_gratuita_click.click()
 
 em_n_gratuita_s = WebDriverWait(nav, 10).until(EC.visibility_of_element_located((By.XPATH, "(//input[@type='text'])[8]")))
 
-em_n_gratuita_s.send_keys(var1['ip_mat_n_gratuita'])
+em_n_gratuita_s.send_keys(var1_1['jan_ip_mat_n_gratuita'])
 
 em_n_gratuita_s.send_keys(Keys.ENTER)
 
@@ -127,7 +131,7 @@ eha_bolsa_popover = WebDriverWait(nav, 10).until(EC.visibility_of_element_locate
 eha_bolsa_s = WebDriverWait(nav, 10).until(EC.visibility_of_element_located((By.XPATH, "(//input[@type='text'])[8]"
 )))
 
-eha_bolsa_s.send_keys(var2['ip_ha_bolsa'])
+eha_bolsa_s.send_keys(var1_2['ip_ha_bolsa'])
 
 eha_bolsa_s.send_keys(Keys.ENTER)
 
@@ -144,8 +148,9 @@ eha_n_gratuita_s = WebDriverWait(nav, 20).until(EC.visibility_of_element_located
 eha_n_gratuita_s = WebDriverWait(nav, 10).until(EC.visibility_of_element_located((By.XPATH, "(//input[@type='text'])[8]"
 )))
 
-eha_n_gratuita_s.send_keys(var2['ip_ha_n_gratuita'])
+eha_n_gratuita_s.send_keys(var1_2['fev_ip_ha_2 Gratuidade Não Regimental'])
 
 eha_n_gratuita_s.send_keys(Keys.ENTER)
+
 
 
